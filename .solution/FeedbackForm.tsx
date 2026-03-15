@@ -12,7 +12,7 @@ import { Button, Textarea } from '@ids/react-bundle';
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button disabled={pending}>
+    <Button htmlType="submit" disabled={pending}>
       {pending ? 'Submitting...' : 'Submit Feedback'}
     </Button>
   );

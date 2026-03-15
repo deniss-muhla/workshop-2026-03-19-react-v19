@@ -51,7 +51,7 @@ export function UserForm() {
           />
         </div>
         <div>
-          <Button disabled={isPending}>
+          <Button htmlType="submit" disabled={isPending}>
             {isPending ? 'Saving...' : 'Save User'}
           </Button>
         </div>

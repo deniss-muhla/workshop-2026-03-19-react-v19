@@ -47,7 +47,7 @@ export function TodoList() {
     <div className="if flex-column gap-16" style={{ maxWidth: 400 }}>
       <form action={handleAdd} className="if flex gap-8">
         <InputField id="todo-input" name="todo" type="text" placeholder="New todo..." />
-        <Button>Add</Button>
+        <Button htmlType="submit">Add</Button>
       </form>
       <ul style={{ listStyle: 'none', padding: 0 }} className="if flex-column gap-8">
         {optimisticTodos.map((todo) => (

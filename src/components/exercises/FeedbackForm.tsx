@@ -19,9 +19,9 @@
 import { useState } from 'react';
 import { Button, Textarea } from '@ids/react-bundle';
 
-function SubmitButton({ isPending }: { isPending: boolean }) {
+function SubmitButton({ isPending, onClick }: { isPending: boolean; onClick: () => void }) {
   return (
-    <Button disabled={isPending}>
+    <Button onClick={onClick} disabled={isPending}>
       {isPending ? 'Submitting...' : 'Submit Feedback'}
     </Button>
   );
@@ -63,7 +63,7 @@ export function FeedbackForm() {
           disabled={isPending}
         />
       </div>
-      <SubmitButton isPending={isPending} />
+      <SubmitButton isPending={isPending} onClick={handleSubmit} />
     </div>
   );
 }
