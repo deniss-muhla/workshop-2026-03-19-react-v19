@@ -1,6 +1,28 @@
 {
-  "name": "typescript",
-  "version": "0.0.0",
+  "name": "react-19-workshop",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {}
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ids/react-bundle": "18.54.0",
+    "@ids/style-css-helpers": "18.54.0",
+    "@ids/style-label": "18.54.0",
+    "@ids/style-scaffolding": "18.54.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-router-dom": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "typescript": "^5.7.0",
+    "vite": "^5.4.0"
+  }
 }
