@@ -13,7 +13,7 @@ export function Exercise06() {
         'Create the Promise OUTSIDE the component (module level).',
         'use(promise) suspends until the Promise resolves.',
         'Wrap the component in <Suspense fallback={<Loading />}> from the parent.',
-        'The Promise must NOT be created inside the component — it causes infinite loops.',
+        'The Promise must NOT be created inside the component - it causes infinite loops.',
       ]}
     >
       <UserList />

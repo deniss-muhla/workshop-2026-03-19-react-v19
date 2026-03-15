@@ -28,4 +28,4 @@ Each exercise has a **broken component**. Open the file, find the bug, and fix i
 2. See the broken component in action
 3. Open the file shown in the blue box
 4. Fix the bug using the React 19 feature described
-5. The app hot-reloads — see your fix immediately
+5. The app hot-reloads - see your fix immediately

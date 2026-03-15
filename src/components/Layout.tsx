@@ -1,12 +1,12 @@
 import { Outlet, NavLink } from 'react-router-dom';
 
 const exercises = [
-  { path: '/exercise/1', label: '01 — Re-render Trap' },
-  { path: '/exercise/2', label: '02 — Stale State' },
-  { path: '/exercise/3', label: '03 — Async Actions' },
-  { path: '/exercise/4', label: '04 — Form Status' },
-  { path: '/exercise/5', label: '05 — Optimistic UI' },
-  { path: '/exercise/6', label: '06 — use() Hook' },
+  { path: '/exercise/1', label: '01 - Re-render Trap' },
+  { path: '/exercise/2', label: '02 - Stale State' },
+  { path: '/exercise/3', label: '03 - Async Actions' },
+  { path: '/exercise/4', label: '04 - Form Status' },
+  { path: '/exercise/5', label: '05 - Optimistic UI' },
+  { path: '/exercise/6', label: '06 - use() Hook' },
 ];
 
 export function Layout() {

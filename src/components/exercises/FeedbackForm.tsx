@@ -2,7 +2,7 @@
  * Exercise 4: Form Status (useFormStatus)
  *
  * BUG: The SubmitButton receives isPending as a prop from the parent.
- *      This is prop drilling — it doesn't scale with component depth.
+ *      This is prop drilling - it doesn't scale with component depth.
  *
  * TASK: Refactor to use React 19's useFormStatus hook.
  *       - Import useFormStatus from 'react-dom'
