@@ -13,14 +13,14 @@ pnpm start
 
 Each exercise has a **broken component**. Open the file, find the bug, and fix it.
 
-| #   | Exercise                      | Concept                | File to Edit                                 |
-| --- | ----------------------------- | ---------------------- | -------------------------------------------- |
-| 01  | [Re-render Trap](/exercise/1) | State drives rendering | `src/components/exercises/Counter.tsx`       |
-| 02  | [Stale State](/exercise/2)    | Functional updaters    | `src/components/exercises/DoubleCounter.tsx` |
-| 03  | [Async Actions](/exercise/3)  | useActionState         | `src/components/exercises/UserForm.tsx`      |
-| 04  | [Form Status](/exercise/4)    | useFormStatus          | `src/components/exercises/FeedbackForm.tsx`  |
-| 05  | [Optimistic UI](/exercise/5)  | useOptimistic          | `src/components/exercises/TodoList.tsx`      |
-| 06  | [use() Hook](/exercise/6)     | use() + Suspense       | `src/components/exercises/UserList.tsx`      |
+| #   | Exercise           | Concept                | File to Edit                                 |
+| --- | ------------------ | ---------------------- | -------------------------------------------- |
+| 01  | **Re-render Trap** | State drives rendering | `src/components/exercises/Counter.tsx`       |
+| 02  | **Stale State**    | Functional updaters    | `src/components/exercises/DoubleCounter.tsx` |
+| 03  | **Async Actions**  | useActionState         | `src/components/exercises/UserForm.tsx`      |
+| 04  | **Form Status**    | useFormStatus          | `src/components/exercises/FeedbackForm.tsx`  |
+| 05  | **Optimistic UI**  | useOptimistic          | `src/components/exercises/TodoList.tsx`      |
+| 06  | **use() Hook**     | use() + Suspense       | `src/components/exercises/UserList.tsx`      |
 
 ## How It Works
 
