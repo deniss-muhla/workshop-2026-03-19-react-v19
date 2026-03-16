@@ -6,7 +6,7 @@
  *      of onClick. The hook manages state + async + pending.
  */
 import { useActionState } from 'react';
-import { Button, InputField } from '@ids/react-bundle';
+import { Button, InputField, AlertBanner } from '@ids/react-bundle';
 
 // Simulated API call
 async function saveUser(name: string) {
@@ -37,7 +37,7 @@ export function UserForm() {
 
   return (
     <form action={dispatch}>
-      <div className="if flex-column gap-16" style={{ maxWidth: 400 }}>
+      <div className="if flex-column gap-16 max-w-384">
         <div className="if flex-column gap-8">
           <label className="if label medium" htmlFor="user-name">
             User Name
@@ -56,14 +56,14 @@ export function UserForm() {
           </Button>
         </div>
         {state.error && (
-          <p className="if typography ui" style={{ color: 'var(--ids-color-red-600, red)' }}>
-            {state.error}
-          </p>
+          <AlertBanner type="error">
+            <span slot="content">{state.error}</span>
+          </AlertBanner>
         )}
         {state.savedUser && (
-          <p className="if typography ui" style={{ color: 'var(--ids-color-green-600, green)' }}>
-            Saved: {state.savedUser.name} (id: {state.savedUser.id})
-          </p>
+          <AlertBanner type="success">
+            <span slot="content">Saved: {state.savedUser.name} (id: {state.savedUser.id})</span>
+          </AlertBanner>
         )}
       </div>
     </form>

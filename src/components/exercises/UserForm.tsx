@@ -16,7 +16,7 @@
  * FILE: src/components/exercises/UserForm.tsx
  */
 import { useState } from 'react';
-import { Button, InputField } from '@ids/react-bundle';
+import { Button, InputField, AlertBanner } from '@ids/react-bundle';
 
 // Simulated API call
 async function saveUser(name: string) {
@@ -47,7 +47,7 @@ export function UserForm() {
   }
 
   return (
-    <div className="if flex-column gap-16" style={{ maxWidth: 400 }}>
+    <div className="if flex-column gap-16 max-w-384">
       <div className="if flex-column gap-8">
         <label className="if label medium" htmlFor="user-name">
           User Name
@@ -68,14 +68,14 @@ export function UserForm() {
         </Button>
       </div>
       {error && (
-        <p className="if typography ui" style={{ color: 'var(--ids-color-red-600, red)' }}>
-          {error}
-        </p>
+        <AlertBanner type="error">
+          <span slot="content">{error}</span>
+        </AlertBanner>
       )}
       {savedUser && (
-        <p className="if typography ui" style={{ color: 'var(--ids-color-green-600, green)' }}>
-          Saved: {savedUser.name} (id: {savedUser.id})
-        </p>
+        <AlertBanner type="success">
+          <span slot="content">Saved: {savedUser.name} (id: {savedUser.id})</span>
+        </AlertBanner>
       )}
     </div>
   );

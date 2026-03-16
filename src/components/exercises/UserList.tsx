@@ -18,7 +18,7 @@
  * FILE: src/components/exercises/UserList.tsx
  */
 import { useState, useEffect } from 'react';
-import { Card, CardType } from '@ids/react-bundle';
+import { Card, CardType, AlertBanner } from '@ids/react-bundle';
 
 // Simulated API call
 function fetchUsers(): Promise<{ id: number; name: string; email: string }[]> {
@@ -56,21 +56,21 @@ export function UserList() {
 
   if (error) {
     return (
-      <p className="if typography ui" style={{ color: 'var(--ids-color-red-600, red)' }}>
-        Error: {error}
-      </p>
+      <AlertBanner type="error">
+        <span slot="content">Error: {error}</span>
+      </AlertBanner>
     );
   }
 
   return (
     <div className="if flex-column gap-12">
       {users?.map((user) => (
-        <Card key={user.id} type={CardType.ELEVATED}>
+        <Card key={user.id} type={CardType.ELEVATED} className="if size-w-100p">
           <div className="if flex-column gap-4 p-16">
-            <span className="if typography ui" style={{ fontWeight: 600 }}>
+            <span className="if typography ui font-wght-700">
               {user.name}
             </span>
-            <span className="if typography ui" style={{ color: 'var(--ids-color-text-subtle, #666)' }}>
+            <span className="if typography ui color-foreground-secondary">
               {user.email}
             </span>
           </div>

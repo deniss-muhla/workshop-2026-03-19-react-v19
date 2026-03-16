@@ -17,6 +17,9 @@ importers:
       '@ids/style-label':
         specifier: 18.54.0
         version: 18.54.0
+      '@ids/style-link':
+        specifier: 18.54.0
+        version: 18.54.0
       '@ids/style-scaffolding':
         specifier: 18.54.0
         version: 18.54.0
@@ -574,6 +577,9 @@ packages:
 
   '@ids/style-label@18.54.0':
     resolution: {integrity: sha1-sTVKsng23gxUVPf8wr6iTPKslZQ=}
+
+  '@ids/style-link@18.54.0':
+    resolution: {integrity: sha1-PaGaI/HJ8a73ku65dhlDLYNYlp0=}
 
   '@ids/style-scaffolding@18.54.0':
     resolution: {integrity: sha1-8gFBLRUVS2Q76RybxRqEgMjimFA=}
@@ -1701,6 +1707,11 @@ snapshots:
       '@ids/telemetry': 2.0.3
 
   '@ids/style-label@18.54.0':
+    dependencies:
+      '@ids/style-scaffolding': 18.54.0
+      '@ids/telemetry': 2.0.3
+
+  '@ids/style-link@18.54.0':
     dependencies:
       '@ids/style-scaffolding': 18.54.0
       '@ids/telemetry': 2.0.3

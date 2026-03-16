@@ -17,7 +17,7 @@
  * FILE: src/components/exercises/FeedbackForm.tsx
  */
 import { useState } from 'react';
-import { Button, Textarea } from '@ids/react-bundle';
+import { Button, Textarea, AlertBanner } from '@ids/react-bundle';
 
 function SubmitButton({ isPending, onClick }: { isPending: boolean; onClick: () => void }) {
   return (
@@ -41,16 +41,16 @@ export function FeedbackForm() {
   if (submitted) {
     return (
       <div className="if flex-column gap-16">
-        <p className="if typography heading small" style={{ color: 'var(--ids-color-green-600, green)' }}>
-          Thank you for your feedback!
-        </p>
+        <AlertBanner type="success">
+          <span slot="content">Thank you for your feedback!</span>
+        </AlertBanner>
         <Button onClick={() => setSubmitted(false)}>Submit another</Button>
       </div>
     );
   }
 
   return (
-    <div className="if flex-column gap-16" style={{ maxWidth: 500 }}>
+    <div className="if flex-column gap-16 max-w-512">
       <div className="if flex-column gap-8">
         <label className="if label medium" htmlFor="feedback">
           Your Feedback

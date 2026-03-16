@@ -13,6 +13,7 @@
     "@ids/react-bundle": "18.54.0",
     "@ids/style-css-helpers": "18.54.0",
     "@ids/style-label": "18.54.0",
+    "@ids/style-link": "18.54.0",
     "@ids/style-scaffolding": "18.54.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",

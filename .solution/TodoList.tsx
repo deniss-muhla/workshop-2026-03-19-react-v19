@@ -44,25 +44,20 @@ export function TodoList() {
   }
 
   return (
-    <div className="if flex-column gap-16" style={{ maxWidth: 400 }}>
+    <div className="if flex-column gap-16 max-w-384">
       <form action={handleAdd} className="if flex gap-8">
         <InputField id="todo-input" name="todo" type="text" placeholder="New todo..." />
         <Button htmlType="submit">Add</Button>
       </form>
-      <ul style={{ listStyle: 'none', padding: 0 }} className="if flex-column gap-8">
+      <ul className="if flex-column gap-8 list-style-none p-0">
         {optimisticTodos.map((todo) => (
           <li
             key={todo.id}
-            className="if flex gap-8 p-12"
-            style={{
-              background: 'var(--ids-color-background-secondary, #f5f5f5)',
-              borderRadius: 6,
-              opacity: todo.pending ? 0.6 : 1,
-            }}
+            className={`if flex gap-8 p-12 border-radius-6 background-layer-2${todo.pending ? ' opacity-60' : ''}`}
           >
             <span className="if typography ui">{todo.text}</span>
             {todo.pending && (
-              <span style={{ color: 'var(--ids-color-text-subtle, #999)' }}>(saving...)</span>
+              <span className="if color-foreground-secondary">(saving...)</span>
             )}
           </li>
         ))}

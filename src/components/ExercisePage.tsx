@@ -1,5 +1,13 @@
 import { type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  ExpandableSection,
+  ExpandableSectionTitle,
+  ExpandableSectionContent,
+  ExpandableSectionArrow,
+  ExpandableSectionVariant,
+  Ui32ArrowSmDown,
+} from '@ids/react-bundle';
 
 interface ExercisePageProps {
   number: number;
@@ -14,54 +22,45 @@ export function ExercisePage({ number, title, description, filePath, hints, chil
   return (
     <div className="if flex-column gap-24">
       <div>
-        <Link to="/" className="if typography ui" style={{ color: 'var(--ids-color-blue-600, #0054f0)', fontSize: 13 }}>
+        <Link to="/" className="if link font-size-12">
           &larr; Back to exercises
         </Link>
-        <h1 className="if typography heading medium" style={{ marginTop: 8 }}>
+        <h1 className="if typography heading medium mt-8">
           Exercise {String(number).padStart(2, '0')}: {title}
         </h1>
-        <p className="if typography paragraph" style={{ marginTop: 4, maxWidth: 600 }}>
+        <p className="if typography paragraph mt-4 max-w-512">
           {description}
         </p>
       </div>
 
-      <div
-        className="if flex-column gap-8 p-16"
-        style={{
-          background: 'var(--ids-color-background-info-subtle, #e6f0ff)',
-          borderRadius: 8,
-          border: '1px solid var(--ids-color-blue-200, #b3d4ff)',
-        }}
-      >
-        <span className="if typography ui" style={{ fontWeight: 700, color: 'var(--ids-color-blue-700, #003db3)' }}>
+      <div className="if flex-column gap-8 p-16 border-radius-6 background-faded-primary border-solid border-width-1 border-color-blue-200">
+        <span className="if typography ui font-wght-700 color-blue-500">
           File to edit:
         </span>
-        <code style={{ fontSize: 14, color: 'var(--ids-color-blue-600, #0054f0)' }}>
+        <code className="if font-size-14 color-blue-400">
           {filePath}
         </code>
       </div>
 
-      <div
-        style={{
-          padding: 24,
-          background: 'var(--ids-color-background-secondary, #f9f9f9)',
-          borderRadius: 8,
-          border: '1px solid var(--ids-color-border-subtle, #e0e0e0)',
-        }}
-      >
+      <div className="if p-24 border-radius-6 background-layer-2 border-solid border-width-1 border-color-beige-500">
         {children}
       </div>
 
-      <details>
-        <summary className="if typography ui" style={{ cursor: 'pointer', fontWeight: 600 }}>
-          Hints
-        </summary>
-        <ul className="if flex-column gap-4" style={{ marginTop: 8, paddingLeft: 20 }}>
-          {hints.map((hint, i) => (
-            <li key={i} className="if typography ui">{hint}</li>
-          ))}
-        </ul>
-      </details>
+      <ExpandableSection variant={ExpandableSectionVariant.LIGHT}>
+        <ExpandableSectionTitle>
+          <span className="if typography ui font-wght-700">Hints</span>
+          <ExpandableSectionArrow>
+            <Ui32ArrowSmDown />
+          </ExpandableSectionArrow>
+        </ExpandableSectionTitle>
+        <ExpandableSectionContent>
+          <ul className="if flex-column gap-4 mt-8 pl-20">
+            {hints.map((hint, i) => (
+              <li key={i} className="if typography ui">{hint}</li>
+            ))}
+          </ul>
+        </ExpandableSectionContent>
+      </ExpandableSection>
     </div>
   );
 }

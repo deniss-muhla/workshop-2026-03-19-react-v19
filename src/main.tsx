@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import '@ids/style-scaffolding';
 import '@ids/style-css-helpers';
 import '@ids/style-label';
+import '@ids/style-link';
 
 import App from './App';
 

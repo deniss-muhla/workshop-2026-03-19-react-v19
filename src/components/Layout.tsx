@@ -1,4 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom';
+import { Shortcut } from '@ids/react-bundle';
 
 const exercises = [
   { path: '/exercise/1', label: '01 - Re-render Trap' },
@@ -11,54 +12,34 @@ const exercises = [
 
 export function Layout() {
   return (
-    <div className="if flex size-w-100p" style={{ minHeight: '100vh' }}>
+    <div className="if flex size-w-100p size-h-100vh">
       {/* Sidebar */}
-      <nav
-        className="if flex-column gap-8 p-24"
-        style={{
-          width: 280,
-          flexShrink: 0,
-          background: 'var(--ids-color-background-secondary, #f5f5f5)',
-          borderRight: '1px solid var(--ids-color-border-subtle, #e0e0e0)',
-        }}
-      >
+      <nav className="if flex-column gap-8 p-24 flex-shrink-0 background-layer-2 size-w-256 border-right-solid border-right-width-1 border-color-beige-500">
         <NavLink
           to="/"
-          style={{ textDecoration: 'none', marginBottom: 16 }}
+          className="if link standalone quiet mb-16"
         >
-          <h2 className="if typography heading small" style={{ margin: 0 }}>
+          <h2 className="if typography heading small m-0">
             React 19 Workshop
           </h2>
         </NavLink>
 
         <div className="if flex-column gap-4">
           {exercises.map((ex) => (
-            <NavLink
+            <Shortcut
               key={ex.path}
+              as={NavLink}
               to={ex.path}
-              className="if typography ui"
-              style={({ isActive }) => ({
-                display: 'block',
-                padding: '8px 12px',
-                borderRadius: 6,
-                textDecoration: 'none',
-                color: isActive
-                  ? 'var(--ids-color-text-primary, #0054f0)'
-                  : 'var(--ids-color-text-default, #333)',
-                background: isActive
-                  ? 'var(--ids-color-background-info-subtle, #e6f0ff)'
-                  : 'transparent',
-                fontWeight: isActive ? 600 : 400,
-              })}
+              variant="light"
             >
               {ex.label}
-            </NavLink>
+            </Shortcut>
           ))}
         </div>
       </nav>
 
       {/* Main content */}
-      <main className="if flex-column p-32" style={{ flex: 1, overflow: 'auto' }}>
+      <main className="if flex-column flex-grow p-32 overflow-auto">
         <Outlet />
       </main>
     </div>

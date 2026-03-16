@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Card, CardType, Tag } from '@ids/react-bundle';
 
 const exercises = [
   {
@@ -50,7 +51,7 @@ export function Home() {
     <div className="if flex-column gap-24">
       <div>
         <h1 className="if typography heading large">React 19 Workshop</h1>
-        <p className="if typography paragraph" style={{ marginTop: 8, maxWidth: 600 }}>
+        <p className="if typography paragraph mt-8 max-w-512">
           Each exercise has a <strong>broken component</strong>. Open the file,
           find the bug, and fix it using React 19 features.
         </p>
@@ -61,54 +62,31 @@ export function Home() {
           <Link
             key={ex.num}
             to={`/exercise/${ex.num}`}
-            style={{ textDecoration: 'none' }}
+            className="if link standalone icon display-block size-w-100p"
           >
-            <div
-              className="if flex-column gap-4 p-16"
-              style={{
-                background: 'var(--ids-color-background-secondary, #f5f5f5)',
-                borderRadius: 8,
-                border: '1px solid var(--ids-color-border-subtle, #e0e0e0)',
-                transition: 'box-shadow 0.15s',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)')}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
-            >
-              <div className="if flex gap-12" style={{ alignItems: 'center' }}>
-                <span
-                  className="if typography ui"
-                  style={{
-                    background: 'var(--ids-color-blue-100, #e6f0ff)',
-                    color: 'var(--ids-color-blue-600, #0054f0)',
-                    padding: '2px 10px',
-                    borderRadius: 12,
-                    fontWeight: 700,
-                    fontSize: 13,
-                  }}
-                >
-                  {String(ex.num).padStart(2, '0')}
-                </span>
-                <span className="if typography heading smallest" style={{ margin: 0 }}>
-                  {ex.title}
-                </span>
-                <span
-                  className="if typography ui"
-                  style={{
-                    marginLeft: 'auto',
-                    color: 'var(--ids-color-text-subtle, #666)',
-                    fontSize: 13,
-                  }}
-                >
-                  {ex.concept}
-                </span>
+            <Card type={CardType.ELEVATED} className="if size-w-100p">
+              <div className="if flex-column gap-4 p-16">
+                <div className="if flex gap-12 align-items-center">
+                  <Tag variant="blue" size="small">
+                    {String(ex.num).padStart(2, '0')}
+                  </Tag>
+                  <span className="if typography heading smallest m-0 flex-grow">
+                    {ex.title}
+                  </span>
+                  <span
+                    className="if typography ui font-size-12 color-foreground-secondary"
+                  >
+                    {ex.concept}
+                  </span>
+                </div>
+                <p className="if typography ui mt-4 mb-0 color-foreground-secondary">
+                  {ex.desc}
+                </p>
+                <code className="if font-size-12 color-foreground-secondary mt-4">
+                  {ex.file}
+                </code>
               </div>
-              <p className="if typography ui" style={{ margin: '4px 0 0', color: 'var(--ids-color-text-subtle, #666)' }}>
-                {ex.desc}
-              </p>
-              <code style={{ fontSize: 12, color: 'var(--ids-color-text-subtle, #999)', marginTop: 4 }}>
-                {ex.file}
-              </code>
-            </div>
+            </Card>
           </Link>
         ))}
       </div>
