@@ -16,13 +16,19 @@
  *
  * FILE: src/components/exercises/FeedbackForm.tsx
  */
-import { useState } from 'react';
-import { Button, Textarea, AlertBanner } from '@ids/react-bundle';
+import { useState } from "react";
+import { Button, Textarea, AlertBanner } from "@ids/react-bundle";
 
-function SubmitButton({ isPending, onClick }: { isPending: boolean; onClick: () => void }) {
+function SubmitButton({
+  isPending,
+  onClick,
+}: {
+  isPending: boolean;
+  onClick: () => void;
+}) {
   return (
-    <Button onClick={onClick} disabled={isPending}>
-      {isPending ? 'Submitting...' : 'Submit Feedback'}
+    <Button htmlType="submit" onClick={onClick} disabled={isPending}>
+      {isPending ? "Submitting..." : "Submit Feedback"}
     </Button>
   );
 }
@@ -50,20 +56,22 @@ export function FeedbackForm() {
   }
 
   return (
-    <div className="if flex-column gap-16 max-w-512">
-      <div className="if flex-column gap-8">
-        <label className="if label medium" htmlFor="feedback">
-          Your Feedback
-        </label>
-        <Textarea
-          id="feedback"
-          name="feedback"
-          placeholder="Tell us what you think..."
-          rows={4}
-          disabled={isPending}
-        />
+    <form>
+      <div className="if flex-column gap-16 max-w-512">
+        <div className="if flex-column gap-8">
+          <label className="if label medium" htmlFor="feedback">
+            Your Feedback
+          </label>
+          <Textarea
+            id="feedback"
+            name="feedback"
+            placeholder="Tell us what you think..."
+            rows={4}
+            disabled={isPending}
+          />
+        </div>
+        <SubmitButton isPending={isPending} onClick={handleSubmit} />
       </div>
-      <SubmitButton isPending={isPending} onClick={handleSubmit} />
-    </div>
+    </form>
   );
 }

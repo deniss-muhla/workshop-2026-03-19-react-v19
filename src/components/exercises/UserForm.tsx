@@ -15,23 +15,31 @@
  *
  * FILE: src/components/exercises/UserForm.tsx
  */
-import { useState } from 'react';
-import { Button, InputField, AlertBanner } from '@ids/react-bundle';
+import { useState } from "react";
+import { Button, InputField, AlertBanner } from "@ids/react-bundle";
 
 // Simulated API call
 async function saveUser(name: string) {
   await new Promise((r) => setTimeout(r, 1000));
-  if (name.toLowerCase() === 'error') {
+  if (name.toLowerCase() === "error") {
     return { error: 'Name cannot be "error"', user: null };
   }
-  return { error: null, user: { id: Math.random().toString(36).slice(2), name } };
+  return {
+    error: null,
+    user: { id: Math.random().toString(36).slice(2), name },
+  };
+}
+
+interface FormState {
+  error: string | null;
+  savedUser: { id: string; name: string } | null;
 }
 
 export function UserForm() {
-  const [name, setName] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [error, setError] = useState<FormState["error"]>(null);
   const [isPending, setIsPending] = useState(false);
-  const [savedUser, setSavedUser] = useState<{ id: string; name: string } | null>(null);
+  const [savedUser, setSavedUser] = useState<FormState["savedUser"]>(null);
 
   async function handleSubmit() {
     setIsPending(true);
@@ -42,41 +50,47 @@ export function UserForm() {
       setError(result.error);
     } else {
       setSavedUser(result.user);
-      setName('');
+      setName("");
     }
   }
 
   return (
-    <div className="if flex-column gap-16 max-w-384">
-      <div className="if flex-column gap-8">
-        <label className="if label medium" htmlFor="user-name">
-          User Name
-        </label>
-        <InputField
-          id="user-name"
-          name="name"
-          type="text"
-          placeholder='Enter name (try "error" to see error)'
-          value={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-          disabled={isPending}
-        />
+    <form>
+      <div className="if flex-column gap-16 max-w-384">
+        <div className="if flex-column gap-8">
+          <label className="if label medium" htmlFor="user-name">
+            User Name
+          </label>
+          <InputField
+            id="user-name"
+            name="name"
+            type="text"
+            placeholder='Enter name (try "error" to see error)'
+            value={name}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setName(e.target.value)
+            }
+            disabled={isPending}
+          />
+        </div>
+        <div>
+          <Button htmlType="submit" onClick={handleSubmit} disabled={isPending}>
+            {isPending ? "Saving..." : "Save User"}
+          </Button>
+        </div>
+        {error && (
+          <AlertBanner type="error">
+            <span slot="content">{error}</span>
+          </AlertBanner>
+        )}
+        {savedUser && (
+          <AlertBanner type="success">
+            <span slot="content">
+              Saved: {savedUser.name} (id: {savedUser.id})
+            </span>
+          </AlertBanner>
+        )}
       </div>
-      <div>
-        <Button onClick={handleSubmit} disabled={isPending}>
-          {isPending ? 'Saving...' : 'Save User'}
-        </Button>
-      </div>
-      {error && (
-        <AlertBanner type="error">
-          <span slot="content">{error}</span>
-        </AlertBanner>
-      )}
-      {savedUser && (
-        <AlertBanner type="success">
-          <span slot="content">Saved: {savedUser.name} (id: {savedUser.id})</span>
-        </AlertBanner>
-      )}
-    </div>
+    </form>
   );
 }
